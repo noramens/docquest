@@ -34,12 +34,12 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ primary }) =>
     primary
       ? `
-      color: #212b36;
-      background-color: #ffffff;
+      color: ${props => props.theme.secodaryColor};
+      background-color: ${props => props.theme.white};
     `
       : `
       color: #ffffff;
-      background-color: #3056d3;
+      background-color: ${props => props.theme.primaryColor};
     `}
 
   svg {
