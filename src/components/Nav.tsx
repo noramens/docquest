@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const NavbarContainer = styled.nav`
-  background-color: #3056d3;
+  background-color: ${props => props.theme.primaryColor};
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@ const NavbarContainer = styled.nav`
   }
 `;
 
-const NavLogo = styled.a`
+const NavLogo = styled(Link)`
   color: #fff;
   font-family: 'Anton', sans-serif;
   font-weight: 400;
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
 
   return (
     <NavbarContainer>
-      <NavLogo href="/">DOCQUEST</NavLogo>
+      <NavLogo to="/">DOCQUEST</NavLogo>
 
       <NavToggle onClick={toggleMenu}>{isOpen ? 'Close' : 'Menu'}</NavToggle>
 
