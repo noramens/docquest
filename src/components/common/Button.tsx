@@ -5,6 +5,9 @@ type ButtonProps = {
   primary?: string;
   icon?: React.ReactNode;
   children: React.ReactNode;
+  type?: string;
+  long?: string;
+  disabled?: boolean;
 };
 
 const hoverAnimation = keyframes`
@@ -30,16 +33,17 @@ const StyledButton = styled.button<ButtonProps>`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  ${({ long }) => long && `width: 96%; margin: auto`};
 
-  ${({ primary }) =>
+  ${({ primary, theme }) =>
     primary
       ? `
-      color: ${props => props.theme.secodaryColor};
-      background-color: ${props => props.theme.white};
+      color: ${theme.secodaryColor};
+      background-color: ${theme.white};
     `
       : `
-      color: #ffffff;
-      background-color: ${props => props.theme.primaryColor};
+      color: ${theme.white};
+      background-color: ${theme.primaryColor};
     `}
 
   svg {
@@ -51,9 +55,16 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ primary, icon, children }) => {
+const Button: React.FC<ButtonProps> = ({
+  primary,
+  icon,
+  children,
+  type = 'text',
+  long = '',
+  disabled
+}) => {
   return (
-    <StyledButton primary={primary}>
+    <StyledButton primary={primary} type={type} long={long} disabled={disabled}>
       {children}
       {icon && icon}
     </StyledButton>

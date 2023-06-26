@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Button from './common/Button';
 import RightArrow from '../assets/svgs/RightArrow';
@@ -68,6 +69,18 @@ const RootContext = styled.p`
   }
 `;
 
+const ActionLink = styled(Link)`
+  color: ${props => props.theme.secodaryColor};
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 5px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+`;
+
 export default function Root() {
   return (
     <RootContainer>
@@ -85,7 +98,7 @@ export default function Root() {
           session history.
         </RootContext>
         <Button primary="primary" icon={<RightArrow />}>
-          Give it a try
+          <ActionLink to="/signup">Give it a try</ActionLink>
         </Button>
       </RootContent>
     </RootContainer>
