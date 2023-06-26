@@ -1,12 +1,14 @@
 import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Button from './common/Button';
 import RightArrow from '../assets/svgs/RightArrow';
 
-const RootContainer = styled.main`
+const RootContent = styled.div`
   color: #fff;
   width: 60vw;
-  margin: 100px auto 10px;
+  height: 90vh;
+  margin: 0 auto 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -14,7 +16,16 @@ const RootContainer = styled.main`
 
   @media (max-width: 768px) {
     width: 90vw;
-    margin: 7vh auto 0;
+    margin: auto;
+  }
+`;
+
+const RootContainer = styled.main`
+  background: ${props => props.theme.primaryColor};
+  padding-top: 100px;
+
+  @media (max-width: 768px) {
+    padding-top: 5vh;
   }
 `;
 
@@ -58,24 +69,38 @@ const RootContext = styled.p`
   }
 `;
 
+const ActionLink = styled(Link)`
+  color: ${props => props.theme.secodaryColor};
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 5px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+`;
+
 export default function Root() {
   return (
     <RootContainer>
-      <RootTitle>
-        DocQuest: <br />
-        Empowering your documents with AI
-      </RootTitle>
-      <RootContext>
-        DocQuest is an AI-powered app for extracting insights from PDFs, DOCX,
-        and PNG files. It provides quick, accurate answers and summarization,
-        eliminating manual searching. With an intuitive interface and
-        intelligent algorithms, it understands context and handles complex
-        queries. DocQuest ensures secure and efficient document analysis with
-        session history.
-      </RootContext>
-      <Button primary="primary" icon={<RightArrow />}>
-        Give it a try
-      </Button>
+      <RootContent>
+        <RootTitle>
+          DocQuest: <br />
+          Empowering your documents with AI
+        </RootTitle>
+        <RootContext>
+          DocQuest is an AI-powered app for extracting insights from PDFs, DOCX,
+          and PNG files. It provides quick, accurate answers and summarization,
+          eliminating manual searching. With an intuitive interface and
+          intelligent algorithms, it understands context and handles complex
+          queries. DocQuest ensures secure and efficient document analysis with
+          session history.
+        </RootContext>
+        <Button primary="primary" icon={<RightArrow />}>
+          <ActionLink to="/signup">Give it a try</ActionLink>
+        </Button>
+      </RootContent>
     </RootContainer>
   );
 }
